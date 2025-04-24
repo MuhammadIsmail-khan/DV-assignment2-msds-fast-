@@ -1,7 +1,3 @@
-# A2 | Tableau Amazon Review Analysis
-
-This folder contains all assets and documentation for the Amazon Review Analysis project. We explore customer sentiment, review trends, product performance, purchase behavior, and potential fraud using a 300 K-row dataset enriched with VADER sentiment scores.
-
 
 
 ---
@@ -15,8 +11,20 @@ This folder contains all assets and documentation for the Amazon Review Analysis
 All fields load natively into Tableau Desktop. We then create calculated fields and transformations directly in the workbook.
 
 ---
-
 ## 2. Data Pre-processing & Calculated Fields
+
+Before loading into Tableau, we performed the following preprocessing steps in sequence:
+
+1. **Convert JSON to CSV**  
+   - Flattened and combined the raw Amazon review JSON files into a single `Output.csv`.
+2. **Field additions & transformations**  
+   - Parsed `Timestamp` (ms) into a continuous `Date` field.  
+   - Extracted `word_occurrence` tokens, computed `TextLength`, etc.
+3. **Sentiment prediction with VADER**  
+   - Computed `vader_compound` polarity scores on review text.  
+   - Bucketed into `Sentiment_Category_VADER` (Positive/Neutral/Negative).
+4. **Load into Tableau**  
+   - Defined the following calculated fields:
 
 | Field Name                    | Type           | Definition / Formula                                                                                                    | Purpose                                                                                               |
 |-------------------------------|----------------|--------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -33,7 +41,6 @@ All fields load natively into Tableau Desktop. We then create calculated fields 
 | **OutlierFlag**               | String         | `IF [TextLength] < PERCENTILE([TextLength],0.05) OR [SentimentAbs]>0.8 THEN "Outlier" ELSE "Normal" END`                  | Flags “weird” reviews (too short or highly polarized) for Fraud Detection & Anomalies dashboard.      |
 
 > **Tip:** Adjust percentile or polarity thresholds in **OutlierFlag** to tune sensitivity.
-
 ---
 
 ## 3. Dashboard Breakdown & Navigation
