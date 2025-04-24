@@ -1,5 +1,5 @@
 
-
+# Tableau Amazon Review Analysis
 ---
 
 ## 1. Data Source
@@ -88,12 +88,11 @@ Before loading into Tableau, we performed the following preprocessing steps in s
 
 ## 4. Key Business Questions Addressed
 
-1. **Which product categories drive the most engagement?**  
-2. **How aligned are star ratings and textual sentiment?**  
-3. **Are there seasonal or pandemic-driven trends in review volume?**  
-4. **Which products balance high ratings with high volumes?**  
-5. **Do verified purchases yield different feedback profiles?**  
-6. **Can we flag potential fake/spam reviews algorithmically?**
+1. **How aligned are star ratings and textual sentiment?**  
+2. **Are there seasonal or pandemic-driven trends in review volume?**  
+3. **Which products balance high ratings with high volumes?**  
+4. **Do verified purchases yield different feedback profiles?**  
+5. **Can we flag potential fake/spam reviews algorithmically?**
 
 ---
 
@@ -119,4 +118,4 @@ Before loading into Tableau, we performed the following preprocessing steps in s
 
 ---
 
-> **Happy Data-Driven Storytelling!**
+> **Muhammad Ismail (24i-8004) & Fatima (24i-8075)**
