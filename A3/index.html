@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>D3 Dashboard </title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <!-- SIDEBAR: selectors will be injected here -->
+    <aside id="sidebar">
+      <h1 class="brand">AI-Dash</h1>
+      <input type="file" id="file-input" accept=".json" />
+      <div id="selectors"></div>
+    </aside>
+
+    <!-- MAIN: four panels for our charts -->
+    <main id="main">
+  <section class="panel" id="radial-chart">
+    <header>Radial Bar Chart</header>
+    <div class="chart-container"></div>
+  </section>
+  <section class="panel" id="chord-chart">
+    <header>Chord Diagram</header>
+    <div class="chart-container"></div>
+  </section>
+  <section class="panel" id="force-chart">
+    <header>Force-Directed Graph</header>
+    <div class="chart-container"></div>
+  </section>
+  <section class="panel" id="sunburst-chart">
+    <header>Sunburst Chart</header>
+    <div class="chart-container"></div>
+  </section>
+</main>
+
+  </div>
+
+  <!-- D3 core library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Chart modules (they define window.renderRadial(), etc.) -->
+  <script src="js/radial_bar.js"></script>
+  <script src="js/chord.js"></script>
+  <script src="js/force_directed.js"></script>
+  <script src="js/sunburst.js"></script>
+
+  <!-- Dashboard orchestrator (wiring + dispatch) -->
+  <script src="js/dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+:root {
+  --bg-1:        #0c0e16;
+  --bg-2:        #1f2a55;
+  --panel-bg:    rgba(20,32,64,0.85);
+  --accent:      #39a8ff;
+  --text:        #eceff4;
+  --muted:       #7a8592;
+  --shadow-dk:   rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* Container: sidebar + main area */
+#container {
+  display: flex;
+  flex: 1;
+  min-height: 0; /* allow children to scroll */
+}
+
+/* Sidebar */
+#sidebar {
+  flex: 0 0 260px;
+  background: var(--panel-bg);
+  padding: 2rem 1.5rem;
+  box-shadow: 4px 0 16px var(--shadow-dk);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#sidebar .brand {
+  font-size: 1.8rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#sidebar input[type=file] {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  background: #152144;
+  border: 1px solid #27304c;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.selector {
+  margin-bottom: 1.25rem;
+}
+
+.selector label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+}
+
+.selector select {
+  width: 100%;
+  padding: 0.5rem;
+  background: #152144;
+  border: 1px solid #27304c;
+  border-radius: 6px;
+  color: var(--text);
+}
+
+.selector select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+/* MAIN PANELS: fixed panels that wrap */
+#main {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;               /* allow wrapping */
+  justify-content: center;       /* center panels on each row */
+  gap: 1.5rem;                   /* consistent gutter */
+  padding: 2rem;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* PANEL: fixed width, optional fixed height */
+.panel {
+  flex: 0 0 500px;               /* don't grow or shrink, always 320px wide */
+  height: 500px;                 /* adjust as you like; ensures consistent aspect */
+  background: var(--panel-bg);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 12px var(--shadow-dk),
+    0 0 8px rgba(57,168,255,0.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.panel:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 6px 16px var(--shadow-dk),
+    0 0 12px var(--accent);
+}
+
+.panel header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 1.1rem;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+/* Chart container fills remaining panel space */
+.chart-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.chart-container svg {
+  width: 100%;
+  height: 100%;
+  display: block; /* remove little html gap */
+}
+
+/* Scrollbar (sidebar & main) */
+#sidebar::-webkit-scrollbar,
+#main::-webkit-scrollbar {
+  width: 6px;
+}
+#sidebar::-webkit-scrollbar-track,
+#main::-webkit-scrollbar-track {
+  background: var(--panel-bg);
+}
+#sidebar::-webkit-scrollbar-thumb,
+#main::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+  }
+  #sidebar {
+    flex: none;
+    width: 100%;
+    box-shadow: none;
+  }
+  #main {
+    padding: 1rem;
+  }
+}
